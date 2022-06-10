@@ -31,6 +31,13 @@ generate_for_language() {
         codegen_build="swagger-codegen-cli-2.4.7.jar"
     fi
 
+#    due to several bugs in codegen 2 with the golang generation
+#    we need to change to v 3 for go
+
+    if [ "${1}" == "go" ]; then
+      codegen_build="swagger-codegen-cli-3.0.34.jar"
+    fi
+
     swagger_cmd="java -jar ./codegen/${codegen_build}"
 
     # generate client library
